@@ -21,8 +21,29 @@
   "buyUrl": "https://amzn.to/4oMDRUI",
   "tabDescription": "Meet the Owala FreeSip — the internet’s favorite insulated water bottle. Designed for ultimate convenience, this leakproof BPA-free bottle keeps your drinks ice-cold all day. Whether you’re at the gym, commuting, or traveling, Owala helps you hydrate in style. Grab yours today before it sells out!",
   "backImage": "images/1.jpg"
- }
- 
+ },
+ {
+  "id": "peter-thomas-roth-instant-firmx-eye-tightener",
+  "title": "Peter Thomas Roth Instant FIRMx Eye Tightener | Anti-Aging Eye Cream for Puffiness & Wrinkles",
+  "description": "Experience the viral eye-tightening sensation everyone’s talking about! The Peter Thomas Roth Instant FIRMx Eye Tightener uses Firm-A-Tite™ technology — a powerful blend of silicates and seaweed extract — to visibly reduce puffiness, fine lines, and deep wrinkles within minutes. The easy-wear tinted formula blends seamlessly with all skin tones, leaving a smooth, makeup-ready finish without residue. Clinically proven to instantly tighten, lift, and firm the under-eye area for a refreshed, youthful look. Ophthalmologist-tested and safe for daily use. Tap 'See Deal' to get the #1 trending eye treatment before it sells out!",
+  "metaDescription": "Shop Peter Thomas Roth Instant FIRMx Eye Tightener — the viral anti-aging eye cream that instantly reduces puffiness, fine lines, and wrinkles. Clinically proven and dermatologist-approved. Trending skincare for 2025.",
+  "price": "38.00",
+  "image": "images/3.jpg",
+  "imageAlt": "Peter Thomas Roth Instant FIRMx Eye Tightener Anti-Aging Eye Cream",
+  "keywords": "Peter Thomas Roth, Instant FIRMx, eye tightener, anti-aging cream, eye firming treatment, reduce puffiness, wrinkle reducer, under-eye cream, skincare for wrinkles, eye lift serum, firm-a-tite technology, viral eye cream 2025, beauty must have, trending skincare product, dark circles treatment, anti aging eye serum, makeup under eye primer, tightening eye gel, top beauty product, best eye cream 2025",
+  "features": [
+    "Clinically proven to instantly tighten and lift the under-eye area",
+    "Reduces the appearance of puffiness, fine lines, and wrinkles",
+    "Firm-A-Tite™ blend with silicates and seaweed extract for visible results",
+    "Tinted formula blends seamlessly on all skin tones",
+    "Lightweight, comfortable, and makeup-friendly",
+    "Ophthalmologist-tested and suitable for all skin types"
+  ],
+  "category": "fashion",
+  "buyUrl": "https://www.amazon.com/dp/B0CHPZQDXQ", 
+  "tabDescription": "Discover why beauty experts and influencers everywhere are obsessed with the Peter Thomas Roth Instant FIRMx Eye Tightener — one of the most searched and top-rated anti-aging skincare products of 2025. This clinically tested, dermatologist-approved eye cream instantly targets puffiness, under-eye bags, and wrinkles with Firm-A-Tite™ technology — a potent blend of skin-tightening silicates and nutrient-rich seaweed extract. It delivers a visibly firmer, lifted, and smoother appearance in just minutes, making it perfect for quick morning routines or special events. The lightweight, sheer tinted formula works beautifully under makeup and helps neutralize discoloration, leaving the under-eye area looking bright and refreshed. Enriched with peptides and botanical extracts, this advanced tightening cream helps improve elasticity and firmness over time for younger-looking skin. Safe for sensitive eyes, cruelty-free, and formulated without parabens, sulfates, or phthalates. Whether you’re combating tired eyes, fine lines, or puffiness, the Instant FIRMx Eye Tightener is your go-to beauty essential for smooth, camera-ready results. Shop now and join thousands who have transformed their eye area with this viral anti-aging breakthrough.",
+  "backImage": "4.jpg"
+}
 
 
   ]
