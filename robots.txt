@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://hoodexo.github.io/HotPickz/sitemap.xml
+Sitemap: https://hoodexo.github.io/HotPickz/sitemap.html
