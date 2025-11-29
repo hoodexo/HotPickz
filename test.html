@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <script type="text/javascript" src="https://optilinklock.com/script_include.php?id=1804502"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nonnas - Comedy Film | Official Movie | Vince Vaughn</title>
-    <meta name="description" content="Watch Nonnas: After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.nonnas movie">
-    <meta name="keywords" content="Nonnas movie, comedy film, Italian restaurant, Vince Vaughn, Stephen Chbosky, Lorraine Bracco, Talia Shire">
+    <title>Nonnas - فيلم كوميدي | الفيلم الرسمي | فينس فون</title>
+    <meta name="description" content="شاهد فيلم Nonnas: بعد فقدان والدته الحبيبة، يخاطر رجل بكل شيء لتكريمها بافتتاح مطعم إيطالي بطهاة من الجدات الحقيقيات.">
+    <meta name="keywords" content="فيلم Nonnas, فيلم كوميدي, مطعم إيطالي, فينس فون, ستيفن تشبوسكي, لورين براكو, تاليا شاير">
     <meta name="author" content="Movie Productions">
     
-    <!-- Schema.org structured data - Fixed version -->
+    <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Movie",
       "name": "Nonnas",
-      "description": "After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.nonnas movie",
+      "description": "After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.",
       "image": "https://example.com/nonnas-poster.jpg",
       "dateCreated": "2023-11-28",
       "director": {
@@ -64,6 +64,7 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            direction: rtl;
         }
         
         .container {
@@ -102,9 +103,35 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: transparent;
+            background-color: rgba(0, 0, 0, 0.3);
             z-index: 2;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .video-overlay:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .lock-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .overlay-text {
+            font-size: 18px;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .video-overlay.hidden {
+            display: none;
         }
         
         /* Movie Info Section */
@@ -130,15 +157,18 @@
         
         .movie-details {
             display: inline-block;
-            text-align: left;
+            text-align: right;
             background: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
             margin-top: 20px;
+            width: 100%;
+            max-width: 500px;
         }
         
         .detail-item {
             margin-bottom: 10px;
+            padding: 5px 0;
         }
         
         .detail-label {
@@ -173,6 +203,14 @@
             .video-container iframe {
                 height: 300px;
             }
+            
+            .lock-icon {
+                font-size: 36px;
+            }
+            
+            .overlay-text {
+                font-size: 16px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -191,6 +229,14 @@
             .movie-details {
                 padding: 15px;
             }
+            
+            .lock-icon {
+                font-size: 28px;
+            }
+            
+            .overlay-text {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -201,11 +247,14 @@
             <div class="video-container">
                 <!-- الفيديو الحقيقي -->
                 <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
                 
                 <!-- الطبقة الشفافة التي ستظهر فوق الفيديو -->
-                <div class="video-overlay"></div>
+                <div class="video-overlay" id="videoOverlay">
+                    <div class="lock-icon">🔒</div>
+                    <div class="overlay-text">انقر لفتح القفل ومشاهدة الفيديو</div>
+                </div>
             </div>
         </div>
     </section>
@@ -214,20 +263,20 @@ allowfullscreen></iframe>
     <section class="movie-info">
         <div class="container">
             <h1 class="movie-title">Nonnas</h1>
-            <p class="movie-description">After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.</p>
+            <p class="movie-description">بعد فقدان والدته الحبيبة، يخاطر رجل بكل شيء لتكريمها بافتتاح مطعم إيطالي بطهاة من الجدات الحقيقيات.</p>
             
             <div class="movie-details">
                 <div class="detail-item">
-                    <span class="detail-label">Director:</span> Stephen Chbosky
+                    <span class="detail-label">المخرج:</span> ستيفن تشبوسكي
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Writers:</span> Liz Maccie, Jody Scaravella
+                    <span class="detail-label">الكتاب:</span> ليز ماكي، جودي سكارافيلا
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Stars:</span> Vince Vaughn, Lorraine Bracco, Talia Shire
+                    <span class="detail-label">النجوم:</span> فينس فون، لورين براكو، تاليا شاير
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Genre:</span> Comedy
+                    <span class="detail-label">النوع:</span> كوميدي
                 </div>
             </div>
         </div>
@@ -236,9 +285,62 @@ allowfullscreen></iframe>
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2023 Nonnas Movie. All rights reserved.</p>
-            <p class="copyright">Official movie website</p>
+            <p>© 2023 فيلم Nonnas. جميع الحقوق محفوظة.</p>
+            <p class="copyright">الموقع الرسمي للفيلم</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoOverlay = document.getElementById('videoOverlay');
+            const iframe = document.querySelector('iframe');
+            
+            // عند النقر على الطبقة الشفافة، تفتح الكونتن لوكر
+            videoOverlay.addEventListener('click', function() {
+                // هنا سيتم فتح الكونتن لوكر
+                // بعد فتح الكونتن لوكر بنجاح، نزيل الطبقة الشفافة
+                
+                // محاكاة لفتح الكونتن لوكر (ستستبدل هذا بالكود الحقيقي)
+                simulateContentUnlock();
+            });
+            
+            // محاكاة لفتح الكونتن لوكر
+            function simulateContentUnlock() {
+                // في التطبيق الحقيقي، هذا سيكون رداً من الكونتن لوكر
+                // بعد فتح القفل بنجاح
+                
+                // إظهار رسالة تحميل
+                videoOverlay.innerHTML = '<div class="lock-icon">⏳</div><div class="overlay-text">جاري فتح الفيديو...</div>';
+                
+                // بعد تأخير بسيط (محاكاة للعملية)
+                setTimeout(function() {
+                    // إخفاء الطبقة الشفافة
+                    videoOverlay.classList.add('hidden');
+                    
+                    // يمكنك هنا أيضاً إعادة تشغيل الفيديو إذا لزم الأمر
+                    // iframe.src = iframe.src; // لإعادة تحميل الفيديو
+                }, 1500);
+            }
+            
+            // للاختبار: إضافة زر لإعادة تعيين الطبقة
+            const resetButton = document.createElement('button');
+            resetButton.textContent = 'إعادة تعيين القفل (للتجربة)';
+            resetButton.style.margin = '20px auto';
+            resetButton.style.display = 'block';
+            resetButton.style.padding = '10px 20px';
+            resetButton.style.backgroundColor = '#8B0000';
+            resetButton.style.color = 'white';
+            resetButton.style.border = 'none';
+            resetButton.style.borderRadius = '5px';
+            resetButton.style.cursor = 'pointer';
+            
+            resetButton.addEventListener('click', function() {
+                videoOverlay.classList.remove('hidden');
+                videoOverlay.innerHTML = '<div class="lock-icon">🔒</div><div class="overlay-text">انقر لفتح القفل ومشاهدة الفيديو</div>';
+            });
+            
+            document.querySelector('.video-section .container').appendChild(resetButton);
+        });
+    </script>
 </body>
 </html>
