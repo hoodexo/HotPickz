@@ -195,32 +195,32 @@
     <section class="video-section">
         <div class="container">
             <div class="video-container">
-                <div class="video-overlay" id="videoOverlay"></div>
-                <div class="video-overlay" id="videoOverlay">
-    <div id="contentLocker" style="
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0,0,0,0.9);
-        color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        text-align: center;
-        display: none; /* مخفي أولًا */
-        z-index: 9999;
-    ">
-        <h3>تابع الفيديو</h3>
-        <p>أكمل عرض الإعلان لتستمر في المشاهدة</p>
-        <button onclick="closeLocker()">إغلاق</button>
+    <!-- الفيديو -->
+    <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+
+    <!-- الطبقة الشفافة + الكونتن لوكر -->
+    <div class="video-overlay" id="videoOverlay">
+        <div id="contentLocker" style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            display: none; /* مخفي أولًا */
+            z-index: 9999;
+        ">
+            <h3>تابع الفيديو</h3>
+            <p>أكمل عرض الإعلان لتستمر في المشاهدة</p>
+            <button onclick="closeLocker()">إغلاق</button>
+        </div>
     </div>
 </div>
-                <!-- الفيديو الحقيقي -->
-                <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-            </div>
-        </div>
     </section>
 
     <!-- Movie Info Section -->
