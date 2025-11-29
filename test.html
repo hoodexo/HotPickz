@@ -1,158 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- سيتم حقن الكود الخاص بـ optilinklock هنا -->
-    <script type="text/javascript" src="https://optilinklock.com/script_include.php?id=1804502"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nonnas – Comedy Film | Official Movie | Vince Vaughn</title>
-    <meta name="description" content="Watch Nonnas: After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.">
-    <meta name="keywords" content="Nonnas movie, comedy film, Italian restaurant, Vince Vaughn, Stephen Chbosky, Lorraine Bracco, Talia Shire">
-    <meta name="author" content="Movie Productions">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Movie",
-      "name": "Nonnas",
-      "description": "After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.",
-      "image": "https://example.com/nonnas-poster.jpg",
-      "dateCreated": "2023-11-28",
-      "director": { "@type": "Person", "name": "Stephen Chbosky" },
-      "author": [
-        { "@type": "Person", "name": "Liz Maccie" },
-        { "@type": "Person", "name": "Jody Scaravella" }
-      ],
-      "actor": [
-        { "@type": "Person", "name": "Vince Vaughn" },
-        { "@type": "Person", "name": "Lorraine Bracco" },
-        { "@type": "Person", "name": "Talia Shire" }
-      ],
-      "genre": "Comedy",
-      "countryOfOrigin": "USA",
-      "duration": "PT1H45M"
-    }
-    </script>
-
+    <title>Nonnas – Comedy Film | Vince Vaughn</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-        body{background:#f5f5f5;color:#333;line-height:1.6}
-        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+        body{background:#111;color:#fff}
 
-        /* فيديو */
-        .video-section{background:#000;padding:40px 0;text-align:center}
-        .video-container{position:relative;width:100%;max-width:800px;margin:0 auto}
-        .video-container iframe{width:100%;height:450px;border-radius:8px;border:none}
+        /* حاوية الفيديو */
+        .video-container{
+            position:relative;
+            width:100%;
+            max-width:800px;
+            margin:40px auto;
+            background:#000;
+            border-radius:8px;
+            overflow:hidden;
+        }
+        /* الفيديو بدون controls */
+        .video-container iframe{
+            width:100%;
+            height:450px;
+            border:none;
+            display:block;
+        }
+        /* زرّ التكبير الخاص بنا */
+        .custom-fs{
+            position:absolute;
+            bottom:8px; right:8px;
+            width:36px; height:36px;
+            background:rgba(0,0,0,.6);
+            border:none;
+            border-radius:4px;
+            cursor:pointer;
+            z-index:10;
+        }
+        /* أيقونة بسيطة */
+        .custom-fs::before{
+            content:'⛶';
+            color:#fff;
+            font-size:18px;
+        }
+        /* وضع ملء الشاشة للحاوية */
+        .video-container.full{
+            position:fixed;
+            inset:0;
+            max-width:none;
+            border-radius:0;
+            z-index:200;
+        }
+        .video-container.full iframe{height:100vh}
 
-        /* طبقة شفافة تُظهر/تُخفى مع اللوكر */
+        /* الطبقة الشفافة */
         #videoOverlay{
             position:absolute;
             inset:0;
             background:transparent;
-            z-index:9998;
-            cursor:pointer;
-            display:none; /* مخفية أولاً */
+            z-index:9999;
+            display:none;
         }
 
         /* باقي الأقسام */
-        .movie-info{padding:60px 0;background:#fff;text-align:center}
-        .movie-title{font-size:3.5rem;color:#8B0000;margin-bottom:20px}
-        .movie-description{font-size:1.3rem;max-width:800px;margin:0 auto 30px;color:#555}
-        .movie-details{display:inline-block;text-align:left;background:#f9f9f9;padding:20px;border-radius:8px;margin-top:20px}
-        .detail-item{margin-bottom:10px}
+        .movie-info{padding:40px 20px;text-align:center}
+        .movie-title{font-size:2.5rem;margin-bottom:15px}
+        .movie-description{font-size:1.1rem;max-width:700px;margin:0 auto 25px;color:#ccc}
+        .movie-details{background:#222;display:inline-block;padding:15px 25px;border-radius:6px;text-align:left}
+        .detail-item{margin:6px 0}
         .detail-label{font-weight:bold;color:#8B0000}
-        footer{background:#333;color:#fff;padding:30px 0;text-align:center}
-        .copyright{margin-top:20px;font-size:.9rem;color:#aaa}
-
-        @media(max-width:768px){
-            .movie-title{font-size:2.5rem}
-            .movie-description{font-size:1.1rem}
-            .video-container iframe{height:300px}
-        }
-        @media(max-width:480px){
-            .movie-title{font-size:2rem}
-            .movie-description{font-size:1rem}
-            .video-container iframe{height:250px}
-        }
+        footer{background:#000;text-align:center;padding:20px;font-size:.9rem;color:#888}
     </style>
 </head>
 <body>
 
-<!-- ========== قسم الفيديو ========== -->
 <section class="video-section">
-    <div class="container">
-        <div class="video-container">
+    <div class="video-container" id="vidContainer">
+        <!-- أزلنا controls وسمحنا فقط ب autoplay -->
+        <iframe id="vidIframe"
+                src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true&controls=0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
 
-            <!-- الفيديو الأصلي -->
-            <iframe src="https://peytonepre.com/embed/2srk7ixp3x46"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-            </iframe>
+        <!-- زرّ التكبير الخاص بنا -->
+        <button class="custom-fs" id="fsBtn" title="تكبير/تصغير"></button>
 
-            <!-- الطبقة الشفافة (تُظهر/تُخفى مع اللوكر) -->
-            <div id="videoOverlay"></div>
-
-        </div>
+        <!-- الطبقة الشفافة -->
+        <div id="videoOverlay"></div>
     </div>
 </section>
 
-<!-- ========== قسم معلومات الفيلم ========== -->
 <section class="movie-info">
-    <div class="container">
-        <h1 class="movie-title">Nonnas</h1>
-        <p class="movie-description">
-            After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.
-        </p>
-
-        <div class="movie-details">
-            <div class="detail-item"><span class="detail-label">Director:</span> Stephen Chbosky</div>
-            <div class="detail-item"><span class="detail-label">Writers:</span> Liz Maccie, Jody Scaravella</div>
-            <div class="detail-item"><span class="detail-label">Stars:</span> Vince Vaughn, Lorraine Bracco, Talia Shire</div>
-            <div class="detail-item"><span class="detail-label">Genre:</span> Comedy</div>
-        </div>
+    <h1 class="movie-title">Nonnas</h1>
+    <p class="movie-description">After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.</p>
+    <div class="movie-details">
+        <div class="detail-item"><span class="detail-label">Director:</span> Stephen Chbosky</div>
+        <div class="detail-item"><span class="detail-label">Writers:</span> Liz Maccie, Jody Scaravella</div>
+        <div class="detail-item"><span class="detail-label">Stars:</span> Vince Vaughn, Lorraine Bracco, Talia Shire</div>
+        <div class="detail-item"><span class="detail-label">Genre:</span> Comedy</div>
     </div>
 </section>
 
-<!-- ========== فوتر ========== -->
-<footer>
-    <div class="container">
-        <p>© 2023 Nonnas Movie. All rights reserved.</p>
-        <p class="copyright">Official movie website</p>
-    </div>
-</footer>
+<footer>© 2023 Nonnas Movie. All rights reserved.</footer>
 
 <!-- ========== السكريبت ========== -->
 <script>
-    const overlay = document.getElementById('videoOverlay');
+    const container = document.getElementById('vidContainer');
+    const overlay   = document.getElementById('videoOverlay');
+    const fsBtn     = document.getElementById('fsBtn');
 
-    // عندما يظهر اللوكر (بعد المدة التي حددتها في لوحة تحكم optilinklock)
-    // نستمع لظهور أي عنصر جديد يحتوي على كلاسات اللوكر
-    const observer = new MutationObserver(() => {
-        // إذا وجدنا أي عنصر يحتوي على كلاسات اللوكر (مثال: .optilinklock-container)
-        const locker = document.querySelector('.optilinklock-container, .locker-container, #contentLocker');
-        if (locker) {
-            overlay.style.display = 'block'; // أظهر الطبقة الشفافة
+    /* تبديل ملء الشاشة للحاوية (لا للـ iframe) */
+    fsBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            container.requestFullscreen().catch(err => console.error(err));
+            container.classList.add('full');
         } else {
-            overlay.style.display = 'none'; // أخفِ الطبقة الشفافة
+            document.exitFullscreen();
+            container.classList.remove('full');
         }
     });
+    /* عند الخروج من ملء الشاشة بالـ ESC */
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) container.classList.remove('full');
+    });
 
-    // نراقب التغييرات في body
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // طريقة بديلة (إذا كان اللوكر يضيف/يزيل كلاس معين على body)
-    // يمكنك استخدامه بدلاً من الـ observer أعلاه إذا أردت
-    /*
-    setInterval(() => {
-        if (document.body.classList.contains('locker-active')) {
-            overlay.style.display = 'block';
+    /* مراقبة ظهور/اختفاء اللوكر (optilinklock) */
+    const obs = new MutationObserver(() => {
+        /* استخدم الكلاس الذي يضيفه اللوكر لك (غيّره حسب الحاجة) */
+        const locker = document.querySelector('.optilinklock-container, .locker-container');
+        if (locker) {
+            overlay.style.display = 'block';          // أظهر الطبقة
+            if (document.fullscreenElement) document.exitFullscreen(); // اخرج من وضع ملء الشاشة
         } else {
-            overlay.style.display = 'none';
+            overlay.style.display = 'none';           // أخفِ الطبقة
         }
-    }, 500);
-    */
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
 </script>
 
 </body>
