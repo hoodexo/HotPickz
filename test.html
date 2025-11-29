@@ -125,18 +125,23 @@
 <script>
     const overlay = document.getElementById('videoOverlay');
 
-    /* نستمع لظهور/اختفاء عنصر اللوكر (غيّر الكلاس حسب ما يضيفه لك الموقع) */
-    const obs = new MutationObserver(() => {
+    // 1️⃣ اجعل overlay يظهر بعد 8 ثوانٍ (التعديل حسب رغبتك)
+    setTimeout(() => {
+        overlay.style.display = 'block';
+    }, 8000); // 8 seconds
+
+    // 2️⃣ راقب اختفاء الكونتن لوكر كل نصف ثانية
+    const checkLockerInterval = setInterval(() => {
         const locker = document.querySelector('.optilinklock-container, .locker-container, #contentLocker, [id*="lock"], [class*="lock"]');
-        if (locker) {
-            overlay.style.display = 'block';          // أظهر الطبقة
-            if (document.fullscreenElement) document.exitFullscreen(); // اخرج من وضع ملء الشاشة
-        } else {
-            overlay.style.display = 'none';           // أخفِ الطبقة
+
+        // إذا لم يوجد الكونتن لوكر → يعني الزائر فتحه
+        if (!locker) {
+            overlay.style.display = 'none'; // أخفِ الطبقة
+            clearInterval(checkLockerInterval);
         }
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
+    }, 500);
 </script>
+
 
 </body>
 </html>
