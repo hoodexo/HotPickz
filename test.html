@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <script type="text/javascript" src="https://optilinklock.com/script_include.php?id=1804502"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nonnas - Comedy Film | Official Movie | Vince Vaughn</title>
@@ -178,6 +178,18 @@
                 padding: 15px;
             }
         }
+        
+        /* CSS الجديد لـ lockerWrapper */
+        .lockerWrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1000;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -189,6 +201,9 @@
                 <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
+                
+                <!-- طبقة lockerWrapper الجديدة -->
+                <div class="lockerWrapper" id="lockerWrapper"></div>
             </div>
         </div>
     </section>
@@ -224,7 +239,97 @@ allowfullscreen></iframe>
         </div>
     </footer>
 
-    <!-- الكونتن لوكر في نهاية الصفحة -->
-    <script type="text/javascript" src="https://optilinklock.com/script_include.php?id=1804502"></script>
+    <!-- JavaScript الجديد -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lockerWrapper = document.getElementById('lockerWrapper');
+            
+            // الانتظار لمدة 20 ثانية
+            setTimeout(function() {
+                // إظهار lockerWrapper
+                lockerWrapper.style.display = 'block';
+                
+                // البحث عن الكونتن لوكر ونقله إلى lockerWrapper
+                moveContentLocker();
+                
+                // مراقبة اختفاء الكونتن لوكر
+                observeContentLockerRemoval();
+            }, 20000);
+            
+            // دالة لنقل الكونتن لوكر
+            function moveContentLocker() {
+                // البحث عن العناصر المحتملة للكونتن لوكر
+                const possibleLockerElements = [
+                    document.querySelector('.olockOverlay'),
+                    document.querySelector('.optilock_overlay'),
+                    document.querySelector('[id*="lock"]'),
+                    document.querySelector('[class*="lock"]')
+                ];
+                
+                for (const element of possibleLockerElements) {
+                    if (element) {
+                        lockerWrapper.appendChild(element);
+                        break;
+                    }
+                }
+                
+                // إذا لم يتم العثور على الكونتن لوكر، حاول مرة أخرى بعد فترة
+                if (lockerWrapper.children.length === 0) {
+                    setTimeout(moveContentLocker, 500);
+                }
+            }
+            
+            // دالة لمراقبة اختفاء الكونتن لوكر
+            function observeContentLockerRemoval() {
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.removedNodes.length > 0) {
+                            for (let i = 0; i < mutation.removedNodes.length; i++) {
+                                const removedNode = mutation.removedNodes[i];
+                                if (removedNode.classList && 
+                                    (removedNode.classList.contains('olockOverlay') || 
+                                     removedNode.classList.contains('optilock_overlay'))) {
+                                    // إخفاء lockerWrapper عند إزالة الكونتن لوكر
+                                    lockerWrapper.style.display = 'none';
+                                    observer.disconnect();
+                                }
+                            }
+                        }
+                    });
+                });
+                
+                // بدء المراقبة
+                observer.observe(lockerWrapper, {
+                    childList: true,
+                    subtree: true
+                });
+                
+                // مراقبة إضافية للتغيرات في الـ style
+                const styleObserver = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                            const target = mutation.target;
+                            if ((target.classList && 
+                                (target.classList.contains('olockOverlay') || 
+                                 target.classList.contains('optilock_overlay'))) &&
+                                target.style.display === 'none') {
+                                // إخفاء lockerWrapper عند إخفاء الكونتن لوكر
+                                lockerWrapper.style.display = 'none';
+                                styleObserver.disconnect();
+                            }
+                        }
+                    });
+                });
+                
+                // بدء مراقبة التغيرات في الـ style
+                if (lockerWrapper.firstChild) {
+                    styleObserver.observe(lockerWrapper.firstChild, {
+                        attributes: true,
+                        attributeFilter: ['style']
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
