@@ -91,6 +91,20 @@
             height: 450px;
             border-radius: 8px;
             border: none;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* الطبقة الشفافة التي ستظهر فوق الفيديو */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: 2;
+            cursor: pointer;
         }
         
         /* Movie Info Section */
@@ -177,28 +191,6 @@
             .movie-details {
                 padding: 15px;
             }
-          /* Force content locker ABOVE all elements including iframe */
-#olockOverlay, 
-.optilock_overlay, 
-.LockOverlay, 
-div[id*="lock"], 
-div[class*="lock"] {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    z-index: 999999999 !important;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-}
-iframe {
-    position: relative !important;
-    z-index: 1 !important;
-}
-
         }
     </style>
 </head>
@@ -211,6 +203,9 @@ iframe {
                 <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
+                
+                <!-- الطبقة الشفافة التي ستظهر فوق الفيديو -->
+                <div class="video-overlay"></div>
             </div>
         </div>
     </section>
