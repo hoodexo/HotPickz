@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nonnas - Comedy Film | Official Movie | Vince Vaughn</title>
@@ -76,44 +77,20 @@
             background-color: #000;
             padding: 40px 0;
             text-align: center;
-            position: relative;
         }
         
-        .video-wrapper {
+        .video-container {
             position: relative;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            height: 450px;
-        }
-        
-        .video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
         }
         
         .video-container iframe {
             width: 100%;
-            height: 100%;
+            height: 450px;
             border-radius: 8px;
             border: none;
-        }
-        
-        /* Content Locker Overlay */
-        .content-locker-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         
         /* Movie Info Section */
@@ -179,7 +156,7 @@
                 font-size: 1.1rem;
             }
             
-            .video-wrapper {
+            .video-container iframe {
                 height: 300px;
             }
         }
@@ -193,7 +170,7 @@
                 font-size: 1rem;
             }
             
-            .video-wrapper {
+            .video-container iframe {
                 height: 250px;
             }
             
@@ -207,18 +184,11 @@
     <!-- Video Section -->
     <section class="video-section">
         <div class="container">
-            <div class="video-wrapper">
-                <!-- Content Locker Overlay -->
-                <div class="content-locker-overlay">
-                    <script type="text/javascript" src="https://optilinklock.com/script_include.php?id=1804502"></script>
-                </div>
-                
-                <!-- Video Container -->
-                <div class="video-container">
-                    <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
-                </div>
+            <div class="video-container">
+                <!-- الفيديو الحقيقي -->
+                <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -253,5 +223,8 @@
             <p class="copyright">Official movie website</p>
         </div>
     </footer>
+
+    <!-- الكونتن لوكر في نهاية الصفحة -->
+    <script type="text/javascript" src="https://optilinklock.com/script_include.php?id=1804502"></script>
 </body>
 </html>
