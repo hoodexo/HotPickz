@@ -1,257 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- سيتم حقن الكود الخاص بـ optilinklock هنا -->
     <script type="text/javascript" src="https://optilinklock.com/script_include.php?id=1804502"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nonnas - Comedy Film | Official Movie | Vince Vaughn</title>
-    <meta name="description" content="Watch Nonnas: After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.nonnas movie">
+    <title>Nonnas – Comedy Film | Official Movie | Vince Vaughn</title>
+    <meta name="description" content="Watch Nonnas: After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.">
     <meta name="keywords" content="Nonnas movie, comedy film, Italian restaurant, Vince Vaughn, Stephen Chbosky, Lorraine Bracco, Talia Shire">
     <meta name="author" content="Movie Productions">
-    
-    <!-- Schema.org structured data - Fixed version -->
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Movie",
       "name": "Nonnas",
-      "description": "After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.nonnas movie",
+      "description": "After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.",
       "image": "https://example.com/nonnas-poster.jpg",
       "dateCreated": "2023-11-28",
-      "director": {
-        "@type": "Person",
-        "name": "Stephen Chbosky"
-      },
+      "director": { "@type": "Person", "name": "Stephen Chbosky" },
       "author": [
-        {
-          "@type": "Person",
-          "name": "Liz Maccie"
-        },
-        {
-          "@type": "Person",
-          "name": "Jody Scaravella"
-        }
+        { "@type": "Person", "name": "Liz Maccie" },
+        { "@type": "Person", "name": "Jody Scaravella" }
       ],
       "actor": [
-        {
-          "@type": "Person",
-          "name": "Vince Vaughn"
-        },
-        {
-          "@type": "Person",
-          "name": "Lorraine Bracco"
-        },
-        {
-          "@type": "Person",
-          "name": "Talia Shire"
-        }
+        { "@type": "Person", "name": "Vince Vaughn" },
+        { "@type": "Person", "name": "Lorraine Bracco" },
+        { "@type": "Person", "name": "Talia Shire" }
       ],
       "genre": "Comedy",
       "countryOfOrigin": "USA",
       "duration": "PT1H45M"
     }
     </script>
-    
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+        body{background:#f5f5f5;color:#333;line-height:1.6}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+        /* فيديو */
+        .video-section{background:#000;padding:40px 0;text-align:center}
+        .video-container{position:relative;width:100%;max-width:800px;margin:0 auto}
+        .video-container iframe{width:100%;height:450px;border-radius:8px;border:none}
+
+        /* طبقة شفافة تُظهر/تُخفى مع اللوكر */
+        #videoOverlay{
+            position:absolute;
+            inset:0;
+            background:transparent;
+            z-index:9998;
+            cursor:pointer;
+            display:none; /* مخفية أولاً */
         }
-        
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
+
+        /* باقي الأقسام */
+        .movie-info{padding:60px 0;background:#fff;text-align:center}
+        .movie-title{font-size:3.5rem;color:#8B0000;margin-bottom:20px}
+        .movie-description{font-size:1.3rem;max-width:800px;margin:0 auto 30px;color:#555}
+        .movie-details{display:inline-block;text-align:left;background:#f9f9f9;padding:20px;border-radius:8px;margin-top:20px}
+        .detail-item{margin-bottom:10px}
+        .detail-label{font-weight:bold;color:#8B0000}
+        footer{background:#333;color:#fff;padding:30px 0;text-align:center}
+        .copyright{margin-top:20px;font-size:.9rem;color:#aaa}
+
+        @media(max-width:768px){
+            .movie-title{font-size:2.5rem}
+            .movie-description{font-size:1.1rem}
+            .video-container iframe{height:300px}
         }
-        .video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    z-index: 9998; /* أعلى من iframe */
-    cursor: pointer;
-}
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Video Section */
-        .video-section {
-            background-color: #000;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .video-container iframe {
-            width: 100%;
-            height: 450px;
-            border-radius: 8px;
-            border: none;
-        }
-        
-        /* Movie Info Section */
-        .movie-info {
-            padding: 60px 0;
-            background-color: white;
-            text-align: center;
-        }
-        
-        .movie-title {
-            font-size: 3.5rem;
-            color: #8B0000;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        
-        .movie-description {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #555;
-        }
-        
-        .movie-details {
-            display: inline-block;
-            text-align: left;
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        
-        .detail-item {
-            margin-bottom: 10px;
-        }
-        
-        .detail-label {
-            font-weight: bold;
-            color: #8B0000;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
-        
-        .copyright {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .movie-title {
-                font-size: 2.5rem;
-            }
-            
-            .movie-description {
-                font-size: 1.1rem;
-            }
-            
-            .video-container iframe {
-                height: 300px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .movie-title {
-                font-size: 2rem;
-            }
-            
-            .movie-description {
-                font-size: 1rem;
-            }
-            
-            .video-container iframe {
-                height: 250px;
-            }
-            
-            .movie-details {
-                padding: 15px;
-            }
+        @media(max-width:480px){
+            .movie-title{font-size:2rem}
+            .movie-description{font-size:1rem}
+            .video-container iframe{height:250px}
         }
     </style>
 </head>
 <body>
-    <!-- Video Section -->
-    <section class="video-section">
-        <div class="container">
-            <div class="video-container">
-    <!-- الفيديو -->
-    <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
-    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen></iframe>
 
-    <!-- الطبقة الشفافة + الكونتن لوكر -->
-    <div class="video-overlay" id="videoOverlay">
-        <div id="contentLocker" style="
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.9);
-            color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            display: none; /* مخفي أولًا */
-            z-index: 9999;
-        ">
-            <h3>تابع الفيديو</h3>
-            <p>أكمل عرض الإعلان لتستمر في المشاهدة</p>
-            <button onclick="closeLocker()">إغلاق</button>
+<!-- ========== قسم الفيديو ========== -->
+<section class="video-section">
+    <div class="container">
+        <div class="video-container">
+
+            <!-- الفيديو الأصلي -->
+            <iframe src="https://peytonepre.com/embed/2srk7ixp3x46"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+
+            <!-- الطبقة الشفافة (تُظهر/تُخفى مع اللوكر) -->
+            <div id="videoOverlay"></div>
+
         </div>
     </div>
-</div>
-    </section>
+</section>
 
-    <!-- Movie Info Section -->
-    <section class="movie-info">
-        <div class="container">
-            <h1 class="movie-title">Nonnas</h1>
-            <p class="movie-description">After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.</p>
-            
-            <div class="movie-details">
-                <div class="detail-item">
-                    <span class="detail-label">Director:</span> Stephen Chbosky
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Writers:</span> Liz Maccie, Jody Scaravella
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Stars:</span> Vince Vaughn, Lorraine Bracco, Talia Shire
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Genre:</span> Comedy
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ========== قسم معلومات الفيلم ========== -->
+<section class="movie-info">
+    <div class="container">
+        <h1 class="movie-title">Nonnas</h1>
+        <p class="movie-description">
+            After losing his beloved mother, a man risks everything to honor her by opening an Italian restaurant with actual grandmothers as the chefs.
+        </p>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2023 Nonnas Movie. All rights reserved.</p>
-            <p class="copyright">Official movie website</p>
+        <div class="movie-details">
+            <div class="detail-item"><span class="detail-label">Director:</span> Stephen Chbosky</div>
+            <div class="detail-item"><span class="detail-label">Writers:</span> Liz Maccie, Jody Scaravella</div>
+            <div class="detail-item"><span class="detail-label">Stars:</span> Vince Vaughn, Lorraine Bracco, Talia Shire</div>
+            <div class="detail-item"><span class="detail-label">Genre:</span> Comedy</div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- ========== فوتر ========== -->
+<footer>
+    <div class="container">
+        <p>© 2023 Nonnas Movie. All rights reserved.</p>
+        <p class="copyright">Official movie website</p>
+    </div>
+</footer>
+
+<!-- ========== السكريبت ========== -->
+<script>
+    const overlay = document.getElementById('videoOverlay');
+
+    // عندما يظهر اللوكر (بعد المدة التي حددتها في لوحة تحكم optilinklock)
+    // نستمع لظهور أي عنصر جديد يحتوي على كلاسات اللوكر
+    const observer = new MutationObserver(() => {
+        // إذا وجدنا أي عنصر يحتوي على كلاسات اللوكر (مثال: .optilinklock-container)
+        const locker = document.querySelector('.optilinklock-container, .locker-container, #contentLocker');
+        if (locker) {
+            overlay.style.display = 'block'; // أظهر الطبقة الشفافة
+        } else {
+            overlay.style.display = 'none'; // أخفِ الطبقة الشفافة
+        }
+    });
+
+    // نراقب التغييرات في body
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // طريقة بديلة (إذا كان اللوكر يضيف/يزيل كلاس معين على body)
+    // يمكنك استخدامه بدلاً من الـ observer أعلاه إذا أردت
+    /*
+    setInterval(() => {
+        if (document.body.classList.contains('locker-active')) {
+            overlay.style.display = 'block';
+        } else {
+            overlay.style.display = 'none';
+        }
+    }, 500);
+    */
+</script>
+
 </body>
 </html>
