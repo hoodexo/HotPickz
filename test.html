@@ -65,6 +65,16 @@
             color: #333;
             line-height: 1.6;
         }
+        .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 9998; /* أعلى من iframe */
+    cursor: pointer;
+}
         
         .container {
             max-width: 1200px;
@@ -84,8 +94,6 @@
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            /* إضافة لضمان عمل z-index بشكل صحيح */
-            transform: translateZ(0);
         }
         
         .video-container iframe {
@@ -93,9 +101,6 @@
             height: 450px;
             border-radius: 8px;
             border: none;
-            /* إجبار الـ iframe على أن يكون في طبقة أقل */
-            z-index: 1 !important;
-            position: relative;
         }
         
         /* Movie Info Section */
@@ -172,7 +177,7 @@
             }
             
             .movie-description {
-                fontSize: 1rem;
+                font-size: 1rem;
             }
             
             .video-container iframe {
@@ -183,37 +188,6 @@
                 padding: 15px;
             }
         }
-        
-        /* CSS الجديد لـ lockerWrapper */
-        .lockerWrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            z-index: 9999;
-            display: none;
-            /* التأكد من أن lockerWrapper فوق كل شيء */
-            transform: translateZ(0);
-        }
-        
-        /* تأكد من أن الكونتن لوكر يظهر بشكل صحيح */
-        .lockerWrapper > * {
-            position: relative;
-            z-index: 10000;
-        }
-        
-        /* إضافة طبقة إضافية للتأكد من التغطية */
-        .lockerOverlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: transparent;
-        }
     </style>
 </head>
 <body>
@@ -221,15 +195,30 @@
     <section class="video-section">
         <div class="container">
             <div class="video-container">
+                <div class="video-overlay" id="videoOverlay"></div>
+                <div class="video-overlay" id="videoOverlay">
+    <div id="contentLocker" style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.9);
+        color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        display: none; /* مخفي أولًا */
+        z-index: 9999;
+    ">
+        <h3>تابع الفيديو</h3>
+        <p>أكمل عرض الإعلان لتستمر في المشاهدة</p>
+        <button onclick="closeLocker()">إغلاق</button>
+    </div>
+</div>
                 <!-- الفيديو الحقيقي -->
                 <iframe src="https://peytonepre.com/embed/2srk7ixp3x46?autoplay=true" 
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
-                
-                <!-- طبقة lockerWrapper الجديدة -->
-                <div class="lockerWrapper" id="lockerWrapper">
-                    <div class="lockerOverlay"></div>
-                </div>
             </div>
         </div>
     </section>
@@ -264,146 +253,5 @@ allowfullscreen></iframe>
             <p class="copyright">Official movie website</p>
         </div>
     </footer>
-
-    <!-- JavaScript الجديد والمحسن -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const lockerWrapper = document.getElementById('lockerWrapper');
-            let contentLockerMoved = false;
-            
-            // الانتظار لمدة 20 ثانية
-            setTimeout(function() {
-                // إظهار lockerWrapper
-                lockerWrapper.style.display = 'block';
-                
-                // البحث عن الكونتن لوكر ونقله إلى lockerWrapper
-                moveContentLocker();
-                
-                // مراقبة اختفاء الكونتن لوكر
-                observeContentLockerRemoval();
-            }, 20000);
-            
-            // دالة لنقل الكونتن لوكر
-            function moveContentLocker() {
-                if (contentLockerMoved) return;
-                
-                // البحث عن العناصر المحتملة للكونتن لوكر
-                const possibleSelectors = [
-                    '.olockOverlay',
-                    '.optilock_overlay',
-                    '[id*="lock"]',
-                    '[class*="lock"]',
-                    'body > div:last-child' // غالباً الكونتن لوكر هو آخر عنصر في body
-                ];
-                
-                for (const selector of possibleSelectors) {
-                    const elements = document.querySelectorAll(selector);
-                    for (const element of elements) {
-                        // تحقق من أن العنصر ليس جزءاً من الهيكل الأساسي للصفحة
-                        if (element && 
-                            !element.closest('.video-container') && 
-                            !element.closest('.movie-info') && 
-                            !element.closest('footer') &&
-                            element !== lockerWrapper) {
-                            
-                            // نقل العنصر إلى lockerWrapper
-                            lockerWrapper.appendChild(element);
-                            contentLockerMoved = true;
-                            console.log('تم نقل الكونتن لوكر بنجاح');
-                            return;
-                        }
-                    }
-                }
-                
-                // إذا لم يتم العثور على الكونتن لوكر، حاول مرة أخرى بعد فترة
-                if (!contentLockerMoved) {
-                    setTimeout(moveContentLocker, 1000);
-                }
-            }
-            
-            // دالة لمراقبة ظهور الكونتن لوكر الجديد
-            function observeNewContentLocker() {
-                const observer = new MutationObserver(function(mutations) {
-                    for (const mutation of mutations) {
-                        if (mutation.addedNodes.length > 0) {
-                            for (const node of mutation.addedNodes) {
-                                if (node.nodeType === 1 && // عنصر HTML
-                                    (node.classList && 
-                                     (node.classList.contains('olockOverlay') || 
-                                      node.classList.contains('optilock_overlay') ||
-                                      node.id.includes('lock') ||
-                                      node.className.includes('lock')))) {
-                                    
-                                    // نقل الكونتن لوكر الجديد
-                                    lockerWrapper.appendChild(node);
-                                    contentLockerMoved = true;
-                                    observer.disconnect();
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                });
-                
-                observer.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                });
-                
-                // إيقاف المراقبة بعد 10 ثوانٍ
-                setTimeout(() => observer.disconnect(), 10000);
-            }
-            
-            // دالة لمراقبة اختفاء الكونتن لوكر
-            function observeContentLockerRemoval() {
-                const observer = new MutationObserver(function(mutations) {
-                    for (const mutation of mutations) {
-                        if (mutation.removedNodes.length > 0) {
-                            for (const node of mutation.removedNodes) {
-                                if (node.nodeType === 1 && 
-                                    (node.classList && 
-                                     (node.classList.contains('olockOverlay') || 
-                                      node.classList.contains('optilock_overlay')))) {
-                                    
-                                    // إخفاء lockerWrapper عند إزالة الكونتن لوكر
-                                    lockerWrapper.style.display = 'none';
-                                    contentLockerMoved = false;
-                                    observer.disconnect();
-                                    return;
-                                }
-                            }
-                        }
-                        
-                        // التحقق من تغيير الـ style
-                        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                            const target = mutation.target;
-                            if (target.classList && 
-                                (target.classList.contains('olockOverlay') || 
-                                 target.classList.contains('optilock_overlay')) &&
-                                (target.style.display === 'none' || target.style.visibility === 'hidden')) {
-                                
-                                // إخفاء lockerWrapper عند إخفاء الكونتن لوكر
-                                lockerWrapper.style.display = 'none';
-                                contentLockerMoved = false;
-                                observer.disconnect();
-                                return;
-                            }
-                        }
-                    }
-                });
-                
-                // بدء المراقبة
-                observer.observe(lockerWrapper, {
-                    childList: true,
-                    subtree: true,
-                    attributes: true,
-                    attributeFilter: ['style']
-                });
-                
-                // بدء مراقبة ظهور الكونتن لوكر الجديد
-                observeNewContentLocker();
-            }
-        });
-    </script>
 </body>
 </html>
