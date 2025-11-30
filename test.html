@@ -214,7 +214,7 @@
             }
             
             .movie-description {
-                fontSize: 1.1rem;
+                font-size: 1.1rem;
             }
             
             .video-container iframe {
@@ -245,7 +245,7 @@
             position:fixed;
             bottom:20px;
             right:20px;
-            width:260px;
+            width:280px;
             background:#111;
             color:#fff;
             padding:14px 16px;
@@ -258,6 +258,26 @@
             animation:slideIn .6s ease forwards;
         }
         #survey-reminder small{display:block;margin-top:6px;opacity:.7;font-size:12px;}
+        #survey-reminder .close-btn{
+            position:absolute;
+            top:8px;
+            right:10px;
+            background:none;
+            border:none;
+            color:#fff;
+            font-size:16px;
+            cursor:pointer;
+            opacity:0.7;
+            padding:0;
+            width:20px;
+            height:20px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        #survey-reminder .close-btn:hover{
+            opacity:1;
+        }
         @keyframes slideIn{to{transform:translateY(0)}}
         /* ====== End reminder ====== */
     </style>
@@ -324,6 +344,7 @@ allowfullscreen></iframe>
 
     <!-- ====== Survey reminder ====== -->
     <div id="survey-reminder">
+        <button class="close-btn" onclick="this.parentElement.remove()">×</button>
         🔓 <strong>Full-screen available soon!</strong><br>
         Complete a short survey to unlock the real fullscreen button.
         <small>It will appear automatically once you finish.</small>
@@ -383,15 +404,9 @@ allowfullscreen></iframe>
         
         // مراقبة حالة Content Locker
         function checkContentLockerStatus() {
-            // هذه الدالة تحتاج للتعديل بناءً على كيفية عمل Content Locker الخاص بك
-            // يمكنك استخدام MutationObserver لمراقبة تغييرات في DOM
-            // أو يمكنك استخدام API الخاص بـ Content Locker إذا كان يوفر ذلك
-            
-            // هذا مثال بسيط - تحتاج لتعديله بناءً على Content Locker الخاص بك
             const lockerElement = document.querySelector('#optilinklock-overlay');
             
             if (lockerElement && lockerElement.style.display === 'none') {
-                // إذا اختفى Content Locker، نسمح بالتكبير الحقيقي
                 enableRealFullscreen();
             }
         }
@@ -437,19 +452,6 @@ allowfullscreen></iframe>
             // بدء فحص دوري لحالة Content Locker (كبديل)
             setInterval(checkContentLockerStatus, 1000);
         });
-        
-        /* ====== Survey reminder script ====== */
-        /* اختفاء البطاقة عند اختفاء الكونتن لوكر */
-        const hideWhenLockerGone = setInterval(()=>{
-            /* عدّل العنصر التالي حسب السكربت الذي تستخدمه */
-            const gone = document.getElementById('optilinklock-overlay')?.style.display === 'none'
-                      || !document.getElementById('optilinklock-overlay'); /* أو أي selector آخر */
-            if(gone){
-                clearInterval(hideWhenLockerGone);
-                document.getElementById('survey-reminder')?.remove();
-            }
-        },800);
-        /* ====== End reminder script ====== */
     </script>
 </body>
 </html>
