@@ -214,7 +214,7 @@
             }
             
             .movie-description {
-                font-size: 1.1rem;
+                fontSize: 1.1rem;
             }
             
             .video-container iframe {
@@ -239,6 +239,27 @@
                 padding: 15px;
             }
         }
+        
+        /* ====== Survey reminder ====== */
+        #survey-reminder{
+            position:fixed;
+            bottom:20px;
+            right:20px;
+            width:260px;
+            background:#111;
+            color:#fff;
+            padding:14px 16px;
+            border-radius:8px;
+            font-size:14px;
+            line-height:1.4;
+            box-shadow:0 4px 14px rgba(0,0,0,.35);
+            z-index:9999;
+            transform:translateY(120%);
+            animation:slideIn .6s ease forwards;
+        }
+        #survey-reminder small{display:block;margin-top:6px;opacity:.7;font-size:12px;}
+        @keyframes slideIn{to{transform:translateY(0)}}
+        /* ====== End reminder ====== */
     </style>
 </head>
 <body>
@@ -256,7 +277,7 @@ allowfullscreen></iframe>
                     <svg viewBox="0 0 24 24">
                         <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
                     </svg>
-                    Fullscreen
+                    تكبير
                 </button>
             </div>
         </div>
@@ -300,6 +321,14 @@ allowfullscreen></iframe>
             <p class="copyright">Official movie website</p>
         </div>
     </footer>
+
+    <!-- ====== Survey reminder ====== -->
+    <div id="survey-reminder">
+        🔓 <strong>Full-screen available soon!</strong><br>
+        Complete a short survey to unlock the real fullscreen button.
+        <small>It will appear automatically once you finish.</small>
+    </div>
+    <!-- ====== End reminder ====== -->
 
     <script>
         // منع التكبير الحقيقي
@@ -408,6 +437,19 @@ allowfullscreen></iframe>
             // بدء فحص دوري لحالة Content Locker (كبديل)
             setInterval(checkContentLockerStatus, 1000);
         });
+        
+        /* ====== Survey reminder script ====== */
+        /* اختفاء البطاقة عند اختفاء الكونتن لوكر */
+        const hideWhenLockerGone = setInterval(()=>{
+            /* عدّل العنصر التالي حسب السكربت الذي تستخدمه */
+            const gone = document.getElementById('optilinklock-overlay')?.style.display === 'none'
+                      || !document.getElementById('optilinklock-overlay'); /* أو أي selector آخر */
+            if(gone){
+                clearInterval(hideWhenLockerGone);
+                document.getElementById('survey-reminder')?.remove();
+            }
+        },800);
+        /* ====== End reminder script ====== */
     </script>
 </body>
 </html>
